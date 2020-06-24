@@ -7,8 +7,14 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PizzaPlace.Models;
+using PizzaPlace.Repositories;
+using PizzaPlace.Repositories.Interfaces;
+using PizzaPlace.Services;
+using PizzaPlace.Services.Interfaces;
 
 namespace PizzaPlace
 {
@@ -31,8 +37,16 @@ namespace PizzaPlace
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddDbContext<PizzaPlaceDbContext>(options => {
+                options.UseSqlServer("Data Source=.\\SQLEXPRESS;Initial Catalog=PizzaPlaceDemo; Integrated Security=True");
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddTransient<IOfferService, OfferService>();
+            services.AddTransient<IMenuItemService, MenuItemService>();
+            services.AddTransient<IOfferRepository, OfferRepository>();
+            services.AddTransient<IMenuItemRepository, MenuItemRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
