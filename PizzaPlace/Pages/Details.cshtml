@@ -6,6 +6,12 @@
 
 <h1>Details</h1>
 
-<h2>
-    @Model.MenuItem.Title
-</h2>
+
+<div class="container">
+    <img width="100%" src="@Model.MenuItem.ImageUrl" />
+    <h1 style="text-align:center">@Model.MenuItem.Title</h1>
+
+    <p style="text-align:center">@Model.MenuItem.Description</p>
+
+    <h2>Price: @Model.MenuItem.Price</h2>
+</div>

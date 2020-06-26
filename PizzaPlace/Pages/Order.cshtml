@@ -1,0 +1,55 @@
+﻿@page
+@model PizzaPlace.OrderModel
+@{
+    ViewData["Title"] = "Order";
+}
+
+<div class="container" style="background-color:#dadada; margin-top:20px; padding:20px;">
+    <form asp-page="Order" method="post">
+        <div class="form-group">
+            <label asp-for="@Model.Order.Name">Name:</label>
+            <input asp-for="@Model.Order.Name" class="form-control" placeholder="Enter name">
+            <span asp-validation-for="@Model.Order.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Order.Surname">Surname:</label>
+            <input asp-for="@Model.Order.Surname" class="form-control" placeholder="Enter Surname">
+            <span asp-validation-for="@Model.Order.Surname" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Order.Address">Address:</label>
+            <input asp-for="@Model.Order.Address" class="form-control" placeholder="Enter Address">
+            <span asp-validation-for="@Model.Order.Address" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Order.Phone ">Phone :</label>
+            <input asp-for="@Model.Order.Phone " class="form-control" placeholder="Enter Phone ">
+            <span asp-validation-for="@Model.Order.Phone " class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Order.Message">Message:</label>
+            <textarea asp-for="@Model.Order.Message" class="form-control" placeholder="Enter Message"></textarea>
+            <span asp-validation-for="@Model.Order.Message" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Order</button>
+    </form>
+</div>
+
+
+@if (!String.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert-danger" style="text-align:center; padding:20px">@Model.ErrorMessage</div>
+}
+
+<div class="container" style="background-color:#dadada; margin-top:20px; padding:20px;">
+    <form asp-page="Order" asp-page-handler="Subscribe" method="post">
+        <h1>Subscribe:</h1>
+        <div class="form-group">
+            <label for="email">Email address:</label>
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
