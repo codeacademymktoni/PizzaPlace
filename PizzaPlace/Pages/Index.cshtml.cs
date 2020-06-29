@@ -23,7 +23,7 @@ namespace PizzaPlace.Pages
         public void OnGet()
         {
             var dbOffers = offerService.GetAll();
-
+            
             Offers = dbOffers.Select(x => new OfferViewModel()
             {
                 Title = x.Title,
