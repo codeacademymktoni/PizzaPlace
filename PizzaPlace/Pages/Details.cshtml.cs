@@ -20,9 +20,9 @@ namespace PizzaPlace
 
         public MenuItemModel MenuItem{ get; set; }
 
-        public void OnGet(int id)
+        public void OnGet(string slug)
         {
-            var menuItem = menuItemService.GetById(id);
+            var menuItem = menuItemService.GetBySlug(slug);
 
             MenuItem = new MenuItemModel()
             {

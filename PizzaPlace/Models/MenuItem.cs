@@ -20,5 +20,7 @@ namespace PizzaPlace.Models
         public string ImageUrl { get; set; }
         [Required]
         public DateTime DateCreated { get; set; }
+        [Required]
+        public string Slug { get; set; }
     }
 }

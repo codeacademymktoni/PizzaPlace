@@ -8,6 +8,8 @@ namespace PizzaPlace.ViewModels
 {
     public class OrderViewModel
     {
+        public int Id { get; set; }
+
         [Required]
         public string Name { get; set; }
 
@@ -23,5 +25,8 @@ namespace PizzaPlace.ViewModels
 
         [Required]
         public string Message { get; set; }
+
+        [Required]
+        public bool IsProcessed { get; set; }
     }
 }

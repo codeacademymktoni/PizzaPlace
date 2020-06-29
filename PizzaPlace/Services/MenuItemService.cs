@@ -23,5 +23,10 @@ namespace PizzaPlace.Services
         {
             return repository.GetById(id);
         }
+
+        public MenuItem GetBySlug(string slug)
+        {
+            return repository.GetBySlug(slug);
+        }
     }
 }

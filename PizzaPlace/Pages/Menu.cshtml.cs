@@ -32,6 +32,7 @@ namespace PizzaPlace
                 newItem.DateCreated = item.DateCreated;
                 newItem.ImageUrl = item.ImageUrl;
                 newItem.Price = item.Price;
+                newItem.Slug = item.Slug;
 
                 MenuItems.Add(newItem);
             };

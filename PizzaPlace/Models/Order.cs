@@ -25,5 +25,8 @@ namespace PizzaPlace.Models
 
         [Required]
         public string Message { get; set; }
+
+        [Required]
+        public bool IsProcessed { get; set; }
     }
 }

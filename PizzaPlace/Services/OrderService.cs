@@ -21,5 +21,21 @@ namespace PizzaPlace.Services
         {
             orderRepository.Add(order);
         }
+
+        public List<Order> GetAll()
+        {
+            return orderRepository.GetAll();
+        }
+
+        public void SetProcessed(int id)
+        {
+            var order = orderRepository.GetById(id);
+
+            if(order != null)
+            {
+                order.IsProcessed = true;
+                orderRepository.Update(order);
+            }
+        }
     }
 }

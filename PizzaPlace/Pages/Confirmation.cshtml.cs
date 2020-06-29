@@ -13,7 +13,7 @@ namespace PizzaPlace
 
         public void OnGetSubscription()
         {
-            Message = "Thanls for subscription";
+            Message = "Thanks for subscription";
         }
     }
 }

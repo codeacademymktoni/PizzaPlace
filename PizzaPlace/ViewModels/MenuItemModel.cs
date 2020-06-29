@@ -10,5 +10,6 @@ namespace PizzaPlace.ViewModels
         public double Price { get; set; }
         public string ImageUrl { get; set; }
         public DateTime DateCreated{ get; set; }
+        public string Slug { get; set; }
     }
 }
