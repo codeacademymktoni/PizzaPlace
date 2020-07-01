@@ -1,8 +1,5 @@
 ﻿using PizzaPlace.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PizzaPlace.Services.Interfaces
 {
@@ -11,5 +8,7 @@ namespace PizzaPlace.Services.Interfaces
         void AddOrder(Order order);
         List<Order> GetAll();
         void SetProcessed(int id);
+        List<Order> GetByStatus(bool isProcessed, bool isDelivered);
+        void SetDelivered(int id);
     }
 }

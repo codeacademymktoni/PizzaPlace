@@ -1,0 +1,24 @@
+﻿@page
+@model PizzaPlace.UsersListModel
+@{
+    ViewData["Title"] = "UsersList";
+}
+
+<div class="container">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.Users)
+            {
+                <tr>
+                    <td>@user.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

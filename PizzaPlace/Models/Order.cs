@@ -28,5 +28,8 @@ namespace PizzaPlace.Models
 
         [Required]
         public bool IsProcessed { get; set; }
+
+        [Required]
+        public bool IsDelivered { get; set; }
     }
 }

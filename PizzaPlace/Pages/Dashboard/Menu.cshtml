@@ -1,0 +1,31 @@
+﻿@page
+@model PizzaPlace.MenuDashboardModel
+@{
+    ViewData["Title"] = "Menu";
+    Layout = "_LayoutDashboard";
+}
+
+    <div class="container">
+        <h2>Orders:</h2>
+
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-page="OrdersList" class="btn btn-primary">All</a>
+            <a asp-page="OrdersList" asp-page-handler="NotProcessed" class="btn btn-primary">Not processed</a>
+            <a asp-page="OrdersList" asp-page-handler="Processed" class="btn btn-primary">Processed</a>
+            <a asp-page="OrdersList" asp-page-handler="Done" class="btn btn-primary">Done</a>
+            <h2>Users</h2>
+            <a asp-page="UsersList" class="btn btn-primary">Users</a>
+        }
+
+        @if (User.IsInRole("Cook"))
+        {
+            <a asp-page="OrdersList" asp-page-handler="NotProcessed" class="btn btn-primary">Not processed</a>
+        }
+
+        @if (User.IsInRole("Delivery"))
+        {
+            <a asp-page="OrdersList" asp-page-handler="Processed" class="btn btn-primary">Processed</a>
+        }
+    </div>
+

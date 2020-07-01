@@ -43,6 +43,7 @@ namespace PizzaPlace
             });
 
             services.AddDefaultIdentity<IdentityUser>()
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<PizzaPlaceDbContext>();
 
             services.Configure<IdentityOptions>(options =>

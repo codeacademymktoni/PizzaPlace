@@ -1,0 +1,57 @@
+﻿@page
+@model PizzaPlace.OrdersListModel
+@{
+    ViewData["Title"] = "OrdersList";
+    Layout = "_LayoutDashboard";
+}
+
+    <div class="container">
+
+        <h1>Orders List</h1>
+
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-page="OrdersList" class="btn btn-primary">All</a>
+            <a asp-page="OrdersList" asp-page-handler="NotProcessed" class="btn btn-primary">Not processed</a>
+            <a asp-page="OrdersList" asp-page-handler="Processed" class="btn btn-primary">Processed</a>
+            <a asp-page="OrdersList" asp-page-handler="Done" class="btn btn-primary">Done</a>
+        }
+
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Message</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model.Orders)
+                {
+                    <tr>
+                        <td>@order.Name</td>
+                        <td>@order.Surname</td>
+                        <td>@order.Address</td>
+                        <td>@order.Phone</td>
+                        <td>@order.Message</td>
+
+                        @if (!order.IsProcessed)
+                        {
+                            <td><a asp-page-handler="SetProcessed" asp-route-id="@order.Id" class="btn btn-primary">Process order</a></td>
+                        }
+                        else if (!order.IsDelivered)
+                        {
+                            <td><a asp-page-handler="SetDelivered" asp-route-id="@order.Id" class="btn btn-primary">Deliver order</a></td>
+                        }
+                        else
+                        {
+                            <td class="text-success">Done</td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>

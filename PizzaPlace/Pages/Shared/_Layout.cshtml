@@ -28,14 +28,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-page="/Order">Order</a>
                         </li>
-
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-light" asp-page="/Admin/OrderList">Orders</a>
+                                <a class="nav-link text-light" asp-page="/Dashboard/Menu">Dashboard</a>
                             </li>
                         }
-
                         <partial name="_LoginPartial" />
                     </ul>
                 </div>
