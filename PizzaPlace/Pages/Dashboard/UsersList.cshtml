@@ -1,24 +1,68 @@
 ﻿@page
+
+@using Microsoft.AspNetCore.Identity
+
 @model PizzaPlace.UsersListModel
 @{
     ViewData["Title"] = "UsersList";
 }
+
+@inject UserManager<IdentityUser> UserManager
 
 <div class="container">
     <table class="table table-hover table-bordered">
         <thead>
             <tr>
                 <th>Email</th>
+                <th>Roles</th>
+                <th>Roles Actions</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var user in Model.Users)
             {
                 <tr>
+                    @*email column*@
                     <td>@user.Email</td>
+                    <td>
+                        @foreach (var role in await UserManager.GetRolesAsync(user))
+                        {
+                            <p>@role</p>
+                        }
+                    </td>
+                    @*role actions column*@
+                    <td>
+                        @foreach (var role in Model.Roles)
+                        {
+                            @if (await UserManager.IsInRoleAsync(user, role.Name))
+                            {
+                                <p>
+                                    <a asp-page-handler="RemoveRole" asp-route-roleName="@role.Name" asp-route-userId="@user.Id" class="text-danger">Remove @role.Name.ToLower() role</a>
+                                </p>
+                            }
+                            else
+                            {
+                                <p>
+                                    <a asp-page-handler="AddRole" asp-route-roleName="@role.Name" asp-route-userId="@user.Id" class="text-success">Add @role.Name.ToLower() role</a>
+                                </p>
+                            }
+                        }
+                    </td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
 
+
+
+
+@*@if (await UserManager.IsInRoleAsync(user, "Cook"))
+    {
+        <p>Cook</p>
+    }
+
+    @if (await UserManager.IsInRoleAsync(user, "Delivery"))
+    {
+        <p>Delivery</p>
+    }*@
